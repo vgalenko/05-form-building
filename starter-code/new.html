@@ -10,8 +10,23 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <link>
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
     </head>
   <body>
     <header class="site-header clearfix">
@@ -41,6 +56,20 @@
                    4. Author's URL
                    5. Article category
                    6. Some way to know if this article is a draft or is published -->
+        <form action="index.html" method="post">
+          <label for="Title">Title:</label><br>
+          <input type="text" name="Title"><br>
+          <label for="Artical body">Article Body:</label><br>
+          <input type="textarea" name="Artical Body"><br>
+          <label for="Author">Author:</label><br>
+          <input type="text" name="Author"><br>
+          <label for="Url">Url:</label><br>
+          <input type="text" name="Url"><br>
+          <label for="Category">Category:</label><br>
+          <input type="text" name="Category"><br>
+          <input type="checkbox" name="Published" value="unchecked">
+          <button type="submit" name="submit"></button>
+        </form>
       </section>
 
       <section id="articles" class="tab-content">
