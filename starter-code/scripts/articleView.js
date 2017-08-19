@@ -80,7 +80,9 @@ articleView.initNewArticlePage = function() {
   //   $('#' + $(this).data('content')).fadeIn();
   // });
   // $('.main-nav .tab:first').click();
+  articleView.handleMainNav();
   $('.tab-content').show();
+  articleView.create();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -96,10 +98,18 @@ articleView.initNewArticlePage = function() {
 articleView.create = function() {
   // TODO: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
-
+  var article;
+  $('articles').empty();
 
   // TODO: Instantiate an article based on what's in the form fields:
-
+  article = new Article({
+    author: $('input:nth-child(2)').val(),
+    authorUrl: $('input:nth-child(3)').val(),
+    title: $('input:first').val(),
+    category: $('input:nth-child(4)').val(),
+    body: $('textarea').val(),
+    publishedOn: $('input:nth-child(5)').length ? new Date(): null
+  });
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
 
