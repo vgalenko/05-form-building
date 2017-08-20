@@ -75,6 +75,7 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  //gg articleView.handleMainNav();
   $('.tab-content').show();
   articleView.create();
 
@@ -109,6 +110,7 @@ articleView.create = function() {
   $('#articles').append(article.toHtml());
 
   // DONE: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
+
   $('pre code').each();
 
   // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
