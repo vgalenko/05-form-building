@@ -80,13 +80,13 @@ articleView.initNewArticlePage = function() {
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
-
-  $('#article-json').on('focus', function(){
+  $('#export-field').hide();
+  $('#article-json').on('click', function(){
     this.select();
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-
+  $('#new-form').on('change',articleView.create);
 };
 
 articleView.create = function() {
@@ -104,9 +104,9 @@ articleView.create = function() {
     body: $('#article-body').val(),
     publishedOn: $('#article-published:checked').length ? new Date() : null
   });
-  console.log(article);
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
 
+  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
+  $('#articles').append(article.toHtml());
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each();
