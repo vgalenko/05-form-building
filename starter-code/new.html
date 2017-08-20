@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <link>
-    <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+
+    <!-- TODO: (DONE) We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
     <script id="article-template" type="text/x-handlebars-template">
       <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
         <header>
@@ -49,27 +47,35 @@
 
       <section id="write" class="tab-content">
         <h1>Create New Article</h1>
-        <!-- TODO: Set up a form to accept user input for a new blog article. Remember that we need:
+        <!-- DONE: Set up a form to accept user input for a new blog article. Remember that we need:
                    1. Article title
                    2. Article body
                    3. Article author
                    4. Author's URL
                    5. Article category
                    6. Some way to know if this article is a draft or is published -->
-        <form action="index.html" method="post">
-          <label for="Title">Title:</label><br>
-          <input type="text" name="Title"><br>
-          <label for="Artical body">Article Body:</label><br>
-          <input type="textarea" name="Artical Body"><br>
-          <label for="Author">Author:</label><br>
-          <input type="text" name="Author"><br>
-          <label for="Url">Url:</label><br>
-          <input type="text" name="Url"><br>
-          <label for="Category">Category:</label><br>
-          <input type="text" name="Category"><br>
-          <input type="checkbox" name="Published" value="unchecked">
-          <button type="submit" name="submit"></button>
+        <form id="new-form">
+          <label>
+          <input type="text" id="article-title" placeholder="Article Title" required>
+          </label>
+          <label>
+            <textarea id="article-body" rows="8" cols="40" placeholder="Type your article here!!" required></textarea>
+          </label>
+          <label>
+          <input type="text" id="article-author" placeholder="Article Author" required>
+          </label>
+          <label>
+          <input type="text" id="article-author-url" placeholder="Author's Url" required>
+          </label>
+          <label>
+          <input type="text" id="article-category" placeholder="Category" required>
+          </label>
+          <label>
+          <input type="checkbox" id="article-published">Published
+          </label>
+
         </form>
+
       </section>
 
       <section id="articles" class="tab-content">
@@ -95,6 +101,7 @@
       // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
+      articleView.initNewArticlePage();
     </script>
   </body>
 </html>
