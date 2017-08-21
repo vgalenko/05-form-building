@@ -75,20 +75,21 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-  //gg articleView.handleMainNav();
-  $('.tab-content').show();
-  articleView.create();
+  $('.tab-content').show()
+  articleView.create()
 
   // DONE: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
   $('#export-field').hide();
-  $('#article-json').on('focus', function(){
-    this.select();
+  $('#article-json').on('focus', function() {
+    this.select()
   });
 
   // DONE: Add an event handler to update the preview and the export field if any inputs change.
   $('#new-form').on('change', articleView.create);
 };
+// CLASSNOTE - more specific if you use the second argument, third is redundant
+// $('#new-form').on('change', 'input, textarea', articleView.create);
 
 articleView.create = function() {
   // DONE: Set up a var to hold the new article we are creating.
@@ -111,12 +112,11 @@ articleView.create = function() {
 
   // DONE: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
 
-  $('pre code').each();
-
-  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#export-field').show();
-  $('#article-json').val(JSON.stringify(article)+',');
-};
+  // corrected in class
+  $('pre code').each(function(i, block){
+    hljs.highlightBlock(block)
+  });
+}
 
 articleView.initIndexPage = function() {
   articleView.populateFilters();
@@ -124,4 +124,4 @@ articleView.initIndexPage = function() {
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
-};
+}
