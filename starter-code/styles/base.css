@@ -49,4 +49,17 @@ a:visited {
 
 label {
   display: block;
+  margin: 20px 0;
+  color: gray;
+}
+
+input, textarea{
+    width: 100%;
+    border-color: green;
+    border-width: thin;
+    border-style: none none solid none;
+}
+
+textarea{
+  border-style: solid;
 }

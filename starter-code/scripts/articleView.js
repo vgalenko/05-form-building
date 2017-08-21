@@ -82,12 +82,12 @@ articleView.initNewArticlePage = function() {
   // DONE: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
   $('#export-field').hide();
-  $('#article-json').on('click', function(){
+  $('#article-json').on('focus', function(){
     this.select();
   });
 
   // DONE: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on('change',articleView.create);
+  $('#new-form').on('change', articleView.create);
 };
 
 articleView.create = function() {
@@ -115,9 +115,8 @@ articleView.create = function() {
 
   // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#export-field').show();
-  $('#article-json').val(JSON.stringify(article) + ',');
+  $('#article-json').val(JSON.stringify(article)+',');
 };
-
 
 articleView.initIndexPage = function() {
   articleView.populateFilters();
